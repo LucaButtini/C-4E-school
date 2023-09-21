@@ -23,7 +23,7 @@ int main()
     printf("Il valore di limite2 è: %d\n", limite2);
 
     // inserisco i numeri che devono essere compresi fra i valori dei due limiti
-    for (int i = 0; i < 5; i++)
+    for (int i = 0; i <= 5; i++)
     {
         do
         {
