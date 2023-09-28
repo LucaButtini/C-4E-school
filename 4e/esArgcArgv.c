@@ -55,6 +55,6 @@ int main(int argc, char *argv[])
         }
     }
     //stampo somma
-    printf("\nLa somma è %d", somma);
+    printf("\nLa somma è %d\n", somma);
     return 0;
 }
