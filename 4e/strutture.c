@@ -23,7 +23,6 @@ int main(int argc, char *argv[])
     p.x = 5;
     p.y = -2;
     p.z = 7;
-    printf("Punto 1");
     stampaStruct(p);
     puntoModificato(p);
     return 0;
