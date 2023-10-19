@@ -21,7 +21,7 @@ int main(int argc, char *argv[])
 
     do
     {
-        c = fgetc(nomi); // ci metto un carattere del file
+        c = fgetc(nomi); // lo fa per ogni carattere del file
         putchar(c);      // stampo a video
     } while (c != EOF);  // EOF è la fine del file
     // il file va chiuso alla fine
