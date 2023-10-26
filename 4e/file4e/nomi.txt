@@ -1,8 +1,4 @@
-Katty
-Luca
-Keren
-Lucio
-viola
-azzurro
-giallo
-arancio
+luca
+katty
+luciano
+francp
