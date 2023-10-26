@@ -19,7 +19,7 @@ int main(int argc, char *argv[])
         exit(1);
     }
     destinazione = fopen(argv[2], "w"); // apro in scrittuyra il file di destinazioneu
-    if (destinazione == NULL)
+    if (destinazione == NULL) // controllo che l'apertura vada a buon fine
     {
         printf("Errore apertura file origine\n");
         exit(1);
