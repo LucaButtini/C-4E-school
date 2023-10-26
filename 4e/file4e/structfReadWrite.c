@@ -4,21 +4,21 @@
 #define BUFFER_DIM 1024 // definizione capacità
 int main(int argc, char *argv[])
 {
-    FILE *origine, *destinazione; // definiziona file origine e destinazione
+    FILE *origine, *destinazione;
     int n;
     unsigned char buffer[BUFFER_DIM];
-    if (argc != 3) // controllo che l'utente inserisca correttamente i parametri dalla riga di comando
+    if (argc != 3)
     {
         printf("Inserire correttamente il numero di parametri\n");
         exit(1);
     }
-    origine = fopen(argv[1], "r"); // apro in lettura il file di origine
-    if (origine == NULL)           // controllo che l'apertura vada a buon fine
+    origine = fopen(argv[1], "r");
+    if (origine == NULL)
     {
         printf("Errore apertura file origine\n");
         exit(1);
     }
-    destinazione = fopen(argv[2], "w"); // apro in scrittuyra il file di destinazioneu
+    destinazione = fopen(argv[2], "w");
     if (destinazione == NULL)
     {
         printf("Errore apertura file origine\n");
