@@ -8,6 +8,7 @@
 // è dichiarata a livello locale e permette di gestire il padre e figlio
 // il codice del padre è condiviso con il figlio, tutto ciò che è presente nel padre sarà presente nel figlio. Sono indipendenti, zone di memoria differente
 // anche i figli possono generare altri figli
+// il p del padre è uguale a quello del figlio
 int p;
 
 int main()
@@ -16,11 +17,11 @@ int main()
     p = fork(); // restituisce un intero
     if (p != 0) // siamo nel padre
     {
-        printf("\nIo sono il padre, p=%d\n", p);
+        printf("\nIo sono il padre, p=%d, PID=%d\n", p, getpid()); // funzione getpid permette di ottenere la visualizzazione del PID
     }
     else // figlio
     {
-        printf("\nIo sono il figlio, p=%d\n", p);
+        printf("\nIo sono il figlio, p=%d, PID=%d\n\n", p, getpid());
     }
     return 0;
 }
