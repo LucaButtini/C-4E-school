@@ -21,7 +21,7 @@ int main()
     }
     else // figlio
     {
-        printf("\nIo sono il figlio, p=%d, PID=%d\n\n", p, getpid());
+        printf("\nIo sono il figlio, p=%d, PID=%d, mio padre ha PID uguale %d\n", p, getpid(), getppid()); // funzione getppidrestituisce pid del padre
     }
     return 0;
 }
