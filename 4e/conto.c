@@ -33,6 +33,7 @@ int main(int argc, char *argv[])
         // padre
         printf("Il mio pid è: %d\n", getpid());
         printf("Mio figlio ha pid : %d\n\n", p);
+        // conto del padre
         for (int i = 0; i <= 19; i++)
         {
             printf("%d\n", i);
@@ -43,6 +44,7 @@ int main(int argc, char *argv[])
         // figlio
         printf("\nIl mio pid è: %d\n", getpid());
         printf("Mio padre ha pid : %d\n\n", getppid());
+        // conto del figlio
         for (int i = 0; i <= 9; i++)
         {
             printf("%d\n", i);
