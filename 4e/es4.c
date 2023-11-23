@@ -3,7 +3,7 @@
 #include <unistd.h>
 
 int p, n;
-
+//esempio per far capire che i processi hanno memorie differenti
 int main(int argc, char *argv[])
 {
     printf("Inserisci un numero: ");
