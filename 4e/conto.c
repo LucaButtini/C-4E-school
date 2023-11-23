@@ -34,9 +34,9 @@ int main(int argc, char *argv[])
         printf("Il mio pid è: %d\n", getpid());
         printf("Mio figlio ha pid : %d\n\n", p);
         // conto del padre
-        for (int i = 0; i <= 19; i++)
+        for (int i = 0; i <= 50; i++)
         {
-            printf("%d\n", i);
+            printf("padre %d\n", i);
         }
     }
     else
@@ -45,9 +45,9 @@ int main(int argc, char *argv[])
         printf("\nIl mio pid è: %d\n", getpid());
         printf("Mio padre ha pid : %d\n\n", getppid());
         // conto del figlio
-        for (int i = 0; i <= 9; i++)
+        for (int i = 0; i <= 20; i++)
         {
-            printf("%d\n", i);
+            printf("figlio %d\n", i);
         }
     }
 
