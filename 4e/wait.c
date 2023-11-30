@@ -13,11 +13,13 @@ int main(int argc, char *argv[])
     {
         printf("1_ Sono il figlio, pid: %d\n", getpid());
         printf("2_ Sono il figlio e mio padre ha pid: %d\n", getppid());
-        exit(25); // prima comunicazione fra figlio e padre
+        exit(25); // prima comunicazione, limitata,  fra figlio e padre
     }
     else // padre
     {
         printf("4_ Sono il padre, pid: %d\n", getpid());
+        printf("5_ Sono il padre e mio figlio ha pid: %d\n\n", p);
+        printf("Attendo che mio figlio: %d termini\n\n", wait(&status));
     }
     return 0;
 }
