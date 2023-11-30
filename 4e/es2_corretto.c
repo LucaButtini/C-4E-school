@@ -18,6 +18,7 @@ int main(int argc, char *argv[])
                 printf("\nsono il figlio %d\n", p);
             }
         }
+
     }
     return 0;
 }
