@@ -22,6 +22,7 @@ int main(int argc, char *argv[])
         printf("Attendo che mio figlio: [%d] termini\n\n", wait(&status));
         printf("Il codice di terminazione di mio figlio: WEXISTATUS(status) => [%d]\n", WEXITSTATUS(status));
         printf("Attendo che mio figlio: [%d] termini\n\n", wait(&status));
+        printf("Sono il padre: %d  e vedo ancora il pid di mio figlio anche se è già terminato, pid: %d\n\n", p, getpid());
     }
     return 0;
 }
