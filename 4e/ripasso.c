@@ -1,39 +1,62 @@
+#include <unistd.h>
+#include <stdlib.h>
 #include <stdio.h>
-
-int main()
+#include <unistd.h>
+#include <sys/wait.h>
+int main(int argc, char *argv[])
 {
-    int limite1, limite2, somma = 0, n;
-    const int MIN = 30, MAX = 50;
-
-    // I limiti devono essere compresi fra 30 e 50
-    do
+    if (argc != 2)
     {
-        printf("Inserisci il primo limite (compreso tra 30 e 50): "); // inserisco i limiti (sono anch'essi limitati)
-        scanf("%d", &limite1);
-    } while (limite1 < MIN || limite1 > MAX);
-
-    do
-    {
-        printf("Inserisci il secondo limite (compreso tra 30 e 50): ");
-        scanf("%d", &limite2);
-    } while (limite2 < MIN || limite2 > MAX);
-
-    // stampo i valori dei limiti
-    printf("Il valore di limite1 è: %d\n", limite1);
-    printf("Il valore di limite2 è: %d\n", limite2);
-
-    // inserisco i numeri che devono essere compresi fra i valori dei due limiti
-    for (int i = 0; i < 5; i++)
-    {
-        do
-        {
-            printf("Inserisci il numero %d (compreso tra %d e %d): ", i + 1, limite1, limite2);
-            scanf("%d", &n);
-        } while (n < limite1 || n > limite2);
-
-        somma += n; // calcolo somma
+        printf("ERRORE ARGOMENTI \n");
+        exit(1);
     }
-
-    printf("Somma: %d\n", somma); // stampo somma
+    int n;             // inserito dall'utente da riga di comando e deve essere ricercato nell'array
+    int numeri[10000]; // array da 10k
+    FILE *destinazione;
+    int p;
+    int status;
+    for (int i = 0; i < 10000; i++)
+    {
+        numeri[i] = rand() % 501; // genera numero casuale
+    }
+    destinazione = fopen("numeri.txt", "w");
+    for (int i = 0; i < 10000; i++)
+    {
+        fprintf(destinazione, "%d: %d \n", i, numeri[i]);
+    }
+    n = atoi(argv[1]); //converto stringa in intero
+    p = fork();
+    if (p == 0) // padre
+    {
+        int p1;
+        p1 = fork();
+        for (int i = 0; i < 2000; i++) // ricerca nei primi 2000
+        {
+            if (n == numeri[i])
+            {
+                printf("PID: %d indice: %d n: %d \n", getpid(), i, numeri[i]);
+            }
+        }
+        if (p1 != 0) // figlio 2
+        {
+            for (int i = 1999; i < 5999; i++)
+            {
+                if (n == numeri[i])
+                {
+                    printf("PID: %d indice: %d n: %d \n", getpid(), i, numeri[i]);
+                }
+            }
+        }
+    }
+    else // figlio 1
+    {
+        for (int i = 5999; i < 9999; i++)
+        {
+            if (n == numeri[i])
+            {
+                printf("PID: %d indice: %d n: %d \n", getpid(), i, numeri[i]);
+            }
+        }
+    }
     return 0;
 }
