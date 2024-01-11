@@ -27,7 +27,7 @@ int main(int argc, char *argv[])
     printf("%d\n", limite2);
 
     for (int i = 0; i < grandezza; i++)
-    { // input
+    {//input
         printf("\nInserisci numero\n");
         scanf("%d", &n[i]);
     }
@@ -46,7 +46,7 @@ int main(int argc, char *argv[])
         }
         j++;
     }
-    // calcolo della somma
+    //calcolo della somma
     for (int i = 0; i < grandezza; i++)
     {
         if (n[i] >= limite1 && n[i] <= limite2)
@@ -54,7 +54,7 @@ int main(int argc, char *argv[])
             somma += n[i];
         }
     }
-    // stampo somma
-    printf("\nLa somma è %d\n", somma);
+    //stampo somma
+    printf("\nLa somma è %d", somma);
     return 0;
 }

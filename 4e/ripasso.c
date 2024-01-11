@@ -1,38 +1,39 @@
 #include <stdio.h>
-#include <stdlib.h>
-#include <time.h>
 
-int main(int argc, char *argv[])
+int main()
 {
-    const int DIM = 10000;
-    int numeri[DIM];
-    int i;
+    int limite1, limite2, somma = 0, n;
+    const int MIN = 30, MAX = 50;
 
-    // var per il random
-    time_t t;
-    srand((unsigned)time(&t));
-
-    FILE *fileDestinazione; // Dichiarazione di un puntatore a un oggetto di tipo FILE
-
-    for (i = 0; i < DIM; i++)
+    // I limiti devono essere compresi fra 30 e 50
+    do
     {
-        numeri[i] = rand() % 501; // generazione numeri random
+        printf("Inserisci il primo limite (compreso tra 30 e 50): "); // inserisco i limiti (sono anch'essi limitati)
+        scanf("%d", &limite1);
+    } while (limite1 < MIN || limite1 > MAX);
+
+    do
+    {
+        printf("Inserisci il secondo limite (compreso tra 30 e 50): ");
+        scanf("%d", &limite2);
+    } while (limite2 < MIN || limite2 > MAX);
+
+    // stampo i valori dei limiti
+    printf("Il valore di limite1 è: %d\n", limite1);
+    printf("Il valore di limite2 è: %d\n", limite2);
+
+    // inserisco i numeri che devono essere compresi fra i valori dei due limiti
+    for (int i = 0; i < 5; i++)
+    {
+        do
+        {
+            printf("Inserisci il numero %d (compreso tra %d e %d): ", i + 1, limite1, limite2);
+            scanf("%d", &n);
+        } while (n < limite1 || n > limite2);
+
+        somma += n; // calcolo somma
     }
 
-    fileDestinazione = fopen("numeri.txt", "w");
-
-    if (fileDestinazione == NULL) // Verifica se l'apertura del file ha avuto successo
-    {
-        printf("Impossibile aprire il file"); // Stampa un messaggio di errore
-        exit(1);                              // Termina il programma con codice di uscita 1, errore
-    }
-
-    for (int i = 0; i < DIM; i++)
-    {
-        fprintf(fileDestinazione, "%d\n", numeri[i]);
-        // fwrite(numeri, sizeof(int), DIM, fileDestinazione);
-    }
-
-    fclose(fileDestinazione);
+    printf("Somma: %d\n", somma); // stampo somma
     return 0;
 }

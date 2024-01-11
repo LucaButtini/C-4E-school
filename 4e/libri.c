@@ -22,13 +22,13 @@ void inserisciLibro(Libro *biblioteca, int i) // metodo inserimento
 
 void stampaBiblioteca(Libro *biblioteca, int dimensione) // metodo di stampa
 {
-    printf("\n===BIBLIOTECA===\n");
+    printf("===BIBLIOTECA===\n");
     for (int i = 0; i < dimensione; i++)
     {
         printf("Libro %d:\n", i + 1);
         printf("Titolo: %s\n", biblioteca[i].titolo);
         printf("Autore: %s\n", biblioteca[i].autore);
-        printf("Prezzo: %.2f\n\n", biblioteca[i].prezzo);
+        printf("Prezzo: %.2f\n", biblioteca[i].prezzo);
     }
 }
 
