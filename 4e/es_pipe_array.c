@@ -27,7 +27,7 @@ int main(int argc, char *argv[])
         wait(&status);
 
         close(fd[1]); // chiudo scrittura
-        n = read(fd[0], array, DIM * sizeof(int));
+        n = read(fd[0], array, sizeof(array));
         if (n == -1)
         {
             printf("erore di lettura nella pipe\n");
@@ -52,11 +52,11 @@ int main(int argc, char *argv[])
             printf("Inserisci il numero %d\n", i + 1);
             scanf("%d", &array[i]);
         }
-        if (write(fd[1], array, DIM * sizeof(int)) == -1) 
+        if (write(fd[1], array, sizeof(array)) == -1)
         {
             printf("errore di scrittura nella pipe\n");
             close(fd[1]);
-            exit(-1); 
+            exit(-1);
         }
 
         close(fd[1]);
