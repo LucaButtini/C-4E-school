@@ -52,7 +52,7 @@ int main(int argc, char *argv[])
             printf("Inserisci il numero %d\n", i + 1);
             scanf("%d", &array[i]);
         }
-        if (write(fd[1], array, DIM * sizeof(int)) == -1) 
+        if (write(fd[1], array, DIM * sizeof(int) == -1))
         {
             printf("errore di scrittura nella pipe\n");
             close(fd[1]);
