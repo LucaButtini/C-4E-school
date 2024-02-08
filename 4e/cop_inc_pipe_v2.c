@@ -12,14 +12,11 @@ int main(int argc, char *argv[])
     int fd[2];
     FILE *origine, *destinazione;
     unsigned char buffer[BUFFER_DIM]; // char senza segno
-
-    // Creazione della pipe
     if (pipe(fd) == -1)
     {
         printf("errore creazione pipe\n");
         exit(-1);
     }
-    // Creazione del primo figlio
     p = fork();
     if (p < 0)
     {
