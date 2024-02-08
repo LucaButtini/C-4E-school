@@ -9,7 +9,7 @@ int main(int argc, char *argv[])
     int p, n;
     int fd[2];
     FILE *origine, *destinazione;
-    unsigned char buffer[BUFFER_DIM];
+    unsigned char buffer[BUFFER_DIM]; // char senza segno
 
     if (pipe(fd) == -1)
     {
