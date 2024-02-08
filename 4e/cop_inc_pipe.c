@@ -25,8 +25,8 @@ int main(int argc, char *argv[])
         exit(-1);
     }
 
-    if (p > 0)// padre
-    {                 
+    if (p > 0) // padre
+    {
         close(fd[0]); // chiudo lettura nel padre
 
         if (argc != 3)
@@ -59,7 +59,7 @@ int main(int argc, char *argv[])
 
         if (destinazione == NULL)
         {
-             printf("Errore apertura file destinazione\n");
+            printf("Errore apertura file destinazione\n");
             close(fd[0]);
             exit(-1);
         }
