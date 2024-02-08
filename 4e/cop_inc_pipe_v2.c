@@ -61,7 +61,6 @@ int main(int argc, char *argv[])
             {
                 fwrite(buffer, 1, n, destinazione);
             }
-
             fclose(destinazione);
             close(fd[0]);
         }
