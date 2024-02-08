@@ -19,21 +19,16 @@ int main(int argc, char *argv[])
         printf("errore creazione pipe\n");
         exit(-1);
     }
-
     // Creazione del primo figlio
     p = fork();
-
     if (p < 0)
     {
         printf("errore generazione figlio\n");
         exit(-1);
     }
-
     if (p > 0) // padre
     {
-
         close(fd[0]);
-
         // Controllo del numero corretto di parametri
         if (argc != 4)
         {
@@ -46,32 +41,24 @@ int main(int argc, char *argv[])
             printf("Errore apertura file origine\n");
             exit(-1);
         }
-
         // Lettura dal file di origine e scrittura sulla pipe
         while ((n = fread(buffer, 1, sizeof(buffer), origine)) > 0)
         {
             write(fd[1], buffer, n);
         }
-
         fclose(origine);
         close(fd[1]);
-
         p = fork();
-
         if (p == 0) // figlio 1
         {
-
             close(fd[1]);
-
             destinazione = fopen(argv[2], "w");
-
             if (destinazione == NULL)
             {
                 printf("Errore apertura file destinazione\n");
                 close(fd[0]);
                 exit(-1);
             }
-
             // Lettura dalla pipe e scrittura nel file di destinazione
             while ((n = read(fd[0], buffer, sizeof(buffer))) > 0)
             {
@@ -95,9 +82,7 @@ int main(int argc, char *argv[])
                     conta++;
                 }
             }
-
             printf("\nIl carattere [%s] è presente [%d] volte\n", argv[3], conta);
-
             fclose(origine);
         }
     }
