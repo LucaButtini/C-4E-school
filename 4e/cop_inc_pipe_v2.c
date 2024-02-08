@@ -31,7 +31,7 @@ int main(int argc, char *argv[])
 
     if (p > 0) // padre
     {
-        // Chiusura dell'estremità di lettura nella pipe nel processo padre
+
         close(fd[0]);
 
         // Controllo del numero corretto di parametri
@@ -40,11 +40,7 @@ int main(int argc, char *argv[])
             printf("numero parametri errato\n");
             exit(-1);
         }
-
-        // Apertura del file di origine in modalità lettura
         origine = fopen(argv[1], "r");
-
-        // Controllo dell'apertura del file di origine
         if (origine == NULL)
         {
             printf("Errore apertura file origine\n");
@@ -57,22 +53,18 @@ int main(int argc, char *argv[])
             write(fd[1], buffer, n);
         }
 
-        // Chiusura del file di origine e dell'estremità di scrittura nella pipe
         fclose(origine);
         close(fd[1]);
 
-        // Creazione del secondo figlio
         p = fork();
 
         if (p == 0) // figlio 1
         {
-            // Chiusura dell'estremità di scrittura nella pipe nel processo figlio 1
+
             close(fd[1]);
 
-            // Apertura del file di destinazione in modalità scrittura
             destinazione = fopen(argv[2], "w");
 
-            // Controllo dell'apertura del file di destinazione
             if (destinazione == NULL)
             {
                 printf("Errore apertura file destinazione\n");
@@ -86,7 +78,6 @@ int main(int argc, char *argv[])
                 fwrite(buffer, 1, n, destinazione);
             }
 
-            // Chiusura del file di destinazione e dell'estremità di lettura nella pipe
             fclose(destinazione);
             close(fd[0]);
         }
@@ -95,22 +86,18 @@ int main(int argc, char *argv[])
             char car;
             int conta = 0;
 
-            // Riapertura del file di origine in modalità lettura
             origine = fopen(argv[1], "r");
 
-            // Conteggio delle occorrenze del carattere specificato
             while ((car = fgetc(origine)) != EOF)
             {
-                if (car == argv[3][0]) // confronta il carattere letto con il carattere specificato
+                if (car == argv[3][0])
                 {
                     conta++;
                 }
             }
 
-            // Stampa del risultato
             printf("\nIl carattere [%s] è presente [%d] volte\n", argv[3], conta);
 
-            // Chiusura del file di origine
             fclose(origine);
         }
     }
