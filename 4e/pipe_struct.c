@@ -23,7 +23,6 @@ int main(int argc, char *argv[])
         printf("errore creazione pipe\n");
         exit(-1);
     }
-
     p = fork();
     if (p < 0)
     {
