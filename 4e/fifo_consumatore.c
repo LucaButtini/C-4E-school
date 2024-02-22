@@ -14,7 +14,6 @@ int main(int argc, char *argv[])
     int fd, somma = 0;
     int numeri[DIM_ARRAY];
     fd = open("sum", O_RDONLY);
-
     read(fd, numeri, sizeof(numeri));
     for (int i = 0; i < DIM_ARRAY; i++)
     {
