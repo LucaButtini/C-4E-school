@@ -1,7 +1,8 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <sys/wait.h>
-#include <sys/types.h>
+#include <sys/types
+3.h>
 #include <stdio.h>
 #include <string.h>
 #include <fcntl.h> //serve per aprire la fifo
