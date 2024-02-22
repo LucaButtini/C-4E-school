@@ -10,6 +10,7 @@
 // CONSUMATORE
 int main(int argc, char *argv[])
 {
+    // fd --> file descriptor (handle) dell'array
     int fd, somma = 0;
     int numeri[DIM_ARRAY];
     fd = open("sum", O_RDONLY);

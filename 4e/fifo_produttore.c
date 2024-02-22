@@ -10,7 +10,7 @@
 // PRODUTTORE
 int main(int argc, char *argv[])
 {
-    int fd;
+    int fd; // file descriptor (handle) dell'array
 
     srand(time(NULL));
     int numeri[DIM_ARRAY];
