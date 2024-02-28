@@ -25,7 +25,7 @@ int main(int argc, char *argv[])
 
     for (int i = 0; i < DIM_ARRAY; i++)
     {
-        read(fd, &scuola[i], sizeof(studente)); // Pass the address of the structure
+        read(fd, &scuola[i], sizeof(studente));
     }
 
     close(fd);
