@@ -23,12 +23,13 @@ int main(int argc, char *argv[])
     if (file == NULL)
     {
         printf("errore apertura file\n");
+        fclose(file);
         exit(-1);
     }
     fd = open("verginita", O_RDONLY);
-    while ((n = fread(buffer, 1, n, file)) > 0)
+    while ((n = fread(buffer, 1, sizeof(buffer), file)) > 0)
     {
-        write(fd, buffer, sizeof(buffer));
+        write(fd, buffer, n);
     }
     fclose(file);
     close(fd);
