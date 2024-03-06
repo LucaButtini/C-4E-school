@@ -41,7 +41,11 @@ int main(int argc, char *argv[])
                 printf("errore scrittura\n");
                 exit(-1);
             }
-
+            if (strcmp(buffer, "HALT") != 0)
+            {
+                printf("chat terminata\n");
+                exit(2);
+            }
             close(fd);
         }
         else
@@ -60,11 +64,12 @@ int main(int argc, char *argv[])
                 exit(-1);
             }
 
-            printf("%s", buffer);
+            printf("%s\n", buffer);
 
             close(fd);
         }
-    } while (strcmp(buffer, "HALT") != 0);
+
+    } while (1);
 
     return 0;
 }
