@@ -5,7 +5,10 @@
         "wait.h": "c",
         "stdio.h": "c",
         "unistd.h": "c",
-        "stat.h": "c"
+        "stat.h": "c",
+        "fcntl.h": "c",
+        "types.h": "c",
+        "signal.h": "c"
     },
     "C_Cpp.errorSquiggles": "disabled"
 }
