@@ -50,6 +50,7 @@ int main(int argc, char *argv[])
     {
         fd = open("fchat2", O_RDONLY);
         message = malloc(DIM_STR);
+        printf("\33[2K\r");
         n = read(fd, message, DIM_STR);
         if (n < 0)
         {
@@ -58,6 +59,7 @@ int main(int argc, char *argv[])
             free(message);
             close(fd);
         }
+
         printf(RED "SHELL 2: %s" COLOR_RESET BLUE "SHELL 1: \n", message);
         fflush(stdout);
         if (strcmp(message, "HALT\n") == 0)
