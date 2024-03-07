@@ -8,9 +8,10 @@
 #include <fcntl.h>
 #include <string.h>
 
-#define DIM_STR 50
+#define DIM_STR 1024
 #define RED "\e[0;31m"
 #define BLUE "\x1b[34m"
+#define COLOR_RESET "\x1b[0m"
 int fd, p, n;
 char *message;
 int main(int argc, char *argv[])
@@ -27,7 +28,7 @@ int main(int argc, char *argv[])
         message = malloc(DIM_STR);
         while (1)
         {
-            printf(BLUE "User 1: ");
+            printf(BLUE "SHELL 1: ");
             fgets(message, DIM_STR, stdin);
             n = write(fd, message, DIM_STR);
             if (n < 0)
@@ -57,7 +58,8 @@ int main(int argc, char *argv[])
             free(message);
             close(fd);
         }
-        printf(RED "User 2: %s", message);
+        printf(RED "SHELL 2: %s" COLOR_RESET BLUE "SHELL 1: \n", message);
+        fflush(stdout);
         if (strcmp(message, "HALT\n") == 0)
         {
             close(fd);
