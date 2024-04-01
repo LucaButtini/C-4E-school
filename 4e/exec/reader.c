@@ -1,3 +1,4 @@
+// La differenza è che qua si usa la funzione execv al posto di execl. Abbiamo poi la lettura e scrittura di dati da file e nell'altro c'era il passaggio di una struct
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -18,7 +19,7 @@ int spawn(char program[], char *argument[])
   if (pid > 0) // padre
     return 0;
   // figlio
-  execv(program, argument); // eseguo il nuovo processo
+  execv(program, argument); // eseguo il nuovo processo, argomenti nome programma e la sua riga di comando
   abort();                  // se l'esecuzione del nuovo processo fallisce, termino il processo figlio
 }
 
@@ -43,7 +44,7 @@ int main(int argc, char *argv[])
   strcpy(arg[1], argv[2]);
   arg[2] = NULL;
 
-  if (spawn(PROGRAM, arg) < 0) // controllo valore restituito dalla funzione spawn
+  if (spawn(PROGRAM, arg) < 0) // controllo valore restituito dalla funzione spawn 
   {
     printf("Errore creazione processo\r\n");
     free(arg[0]);
