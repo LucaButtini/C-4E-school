@@ -13,18 +13,19 @@ int main(int argc, char *argv[])
      int n;
      int fifo;
 
-     if (argc != 2)
+     if (argc != 2) // controllo argomenti di argc
      {
           printf("Uso: %s file\r\n", argv[0]);
           return 0;
      }
 
-     fifo = open("my_fifo", O_RDONLY);
+     fifo = open("my_fifo", O_RDONLY); // apro fifo in lettura  e controllo la corretta apertura
      if (fifo < 0)
      {
           printf("Errore apertura FIFO\r\n");
           return 0;
      }
+     // apro il file binario in scrittura e controllo la corretta apertura
      file = fopen(argv[1], "wb");
      if (file == NULL)
      {
@@ -32,6 +33,7 @@ int main(int argc, char *argv[])
           close(fifo);
           return 0;
      }
+     // leggo i dati dalla fifo e gli scrive nel file di destinazione
      while ((n = read(fifo, buffer, sizeof(buffer))) > 0)
           fwrite(buffer, 1, n, file);
      close(fifo);
