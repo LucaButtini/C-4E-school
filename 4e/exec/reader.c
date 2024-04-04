@@ -8,7 +8,7 @@
 #include <fcntl.h>
 // definizione costanti
 #define BLOCK_DIM 1024
-#define PROGRAM "./writer"
+#define PROGRAM "writer" // nome del consumatore definito in costante
 // funzione di spawn
 int spawn(char program[], char *argument[])
 {
@@ -38,7 +38,8 @@ int main(int argc, char *argv[])
   }
   // creo la riga di comando che passerò al figlio
   // questa serve a mandare in esecuzione il processo consumatore, writer
-  arg[0] = (char *)malloc(strlen(PROGRAM) + 1);
+  // uso la malloc per allocare nello heap la memoria per le stringhe
+  arg[0] = (char *)malloc(strlen(PROGRAM) + 1); //+1 per lo \0 del fine stringa. *char per dire che sono di tipo caratteri caratteri
   strcpy(arg[0], PROGRAM);
   arg[1] = (char *)malloc(strlen(argv[2]) + 1);
   strcpy(arg[1], argv[2]);

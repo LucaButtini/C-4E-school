@@ -29,5 +29,18 @@ int main(int argc, char *argv[])
         printf("errore argomenti\n");
         exit(-1);
     }
+    /*
+    esempio:
+    1) execl("/home/itis/lab/finestra", "finestra", "ciao", "4", NULL);
+    char *mioarray[];
+    mioarray[0] = "finestra";
+    mioarray[1] = "ciao";
+    ecc...
+    mioarray[3] = NULL;
+    2) execv("home/itis/lab/finestra", mioarray)
+
+    la execv e execl sono la stessa cosa ma si chiamano differentemente
+    */
+    // eccetera ....
     return 0;
 }
