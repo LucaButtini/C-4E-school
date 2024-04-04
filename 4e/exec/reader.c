@@ -17,7 +17,7 @@ int spawn(char program[], char *argument[])
   if (pid < 0)  // controllo se il fork ha fallito
     return -1;
   if (pid > 0) // padre
-    return 0;
+    return 0;// il compito del padre della spawn è semplicemente di terminare la funzione, il produttore è il padre che continua fuori dallo spawn
   // figlio
   execv(program, argument); // eseguo il nuovo processo, argomenti nome programma e la sua riga di comando
   abort();                  // se l'esecuzione del nuovo processo fallisce, termino il processo figlio
