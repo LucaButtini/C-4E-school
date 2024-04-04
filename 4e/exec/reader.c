@@ -44,7 +44,7 @@ int main(int argc, char *argv[])
   strcpy(arg[1], argv[2]);
   arg[2] = NULL;
 
-  if (spawn(PROGRAM, arg) < 0) // controllo valore restituito dalla funzione spawn 
+  if (spawn(PROGRAM, arg) < 0) // controllo valore restituito dalla funzione spawn
   {
     printf("Errore creazione processo\r\n");
     free(arg[0]);
