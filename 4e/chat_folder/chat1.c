@@ -1,3 +1,4 @@
+// gnome-terminal -- bash -c "exec bash" SE VUOI FARE UNA BASH CON UNA BASH
 #include <stdlib.h>
 #include <stdio.h>
 #include <unistd.h>
