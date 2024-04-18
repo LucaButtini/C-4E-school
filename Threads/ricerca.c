@@ -33,12 +33,9 @@ void *ricerca_prima(void *s)
 
 int main()
 {
-
     pthread_t tPrima, tSeconda;
-
-    pthread_create(&tPrima, NULL, &ricerca_prima, (void *)array);
-    pthread_create(&tSeconda, NULL, &ricerca_seconda, (void *)array);
-
+    pthread_create(&tPrima, NULL, &ricerca_prima, array);
+    pthread_create(&tSeconda, NULL, &ricerca_seconda, array);
     pthread_join(tPrima, NULL);
     pthread_join(tSeconda, NULL);
 
