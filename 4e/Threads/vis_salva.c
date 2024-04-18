@@ -31,7 +31,7 @@ void *file_student(void *par)
         return NULL;
     }
     //fwrite(std, sizeof(studente), 1, file);
-    fprintf(file, "Nome: %s\nCognome: %s\nMedia: %d\n", std->nome, std->cognome, std->media);
+    fprintf(file, "Nome: %s Cognome: %s Media: %d", std->nome, std->cognome, std->media);
 
     fclose(file);
     return NULL;
