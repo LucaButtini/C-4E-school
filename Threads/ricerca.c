@@ -3,9 +3,10 @@
 #include <pthread.h>
 #define DIM 10
 
+int array[DIM] = {8, 5, 2, 5, 6, 4, 8, 7, 8, 0}; // Array predefinito in visualizzazione globale
+
 void *ricerca_seconda(void *s)
 {
-    int *array = (int *)s;
     // Esegue la ricerca nella seconda metà dell'array
     for (int i = DIM / 2; i < DIM; i++)
     {
@@ -19,7 +20,6 @@ void *ricerca_seconda(void *s)
 
 void *ricerca_prima(void *s)
 {
-    int *array = (int *)s;
     // Esegue la ricerca nella prima metà dell'array
     for (int i = 0; i < DIM / 2; i++)
     {
@@ -33,7 +33,7 @@ void *ricerca_prima(void *s)
 
 int main()
 {
-    int array[DIM] = {8, 5, 2, 5, 6, 4, 8, 7, 8, 0}; // Array predefinito
+
     pthread_t tPrima, tSeconda;
 
     pthread_create(&tPrima, NULL, &ricerca_prima, (void *)array);
