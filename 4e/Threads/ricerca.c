@@ -33,7 +33,7 @@ void *ricerca_prima(void *s)
 
 int main()
 {
-    int array[DIM] = {3, 5, 2, 5, 6, 4, 1, 7, 8, 0}; // Array predefinito
+    int array[DIM] = {8, 5, 2, 5, 6, 4, 8, 7, 8, 0}; // Array predefinito
     pthread_t tPrima, tSeconda;
 
     pthread_create(&tPrima, NULL, &ricerca_prima, (void *)array);
