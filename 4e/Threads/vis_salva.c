@@ -16,7 +16,7 @@ void *print_student(void *par)
 {
     studente *std = (studente *)par; // faccio il cast del parametro a studente
     printf("Nome: %s, Cognome: %s, Media: %d\n", std->nome, std->cognome, std->media);
-    return NULL;
+    pthread_exit NULL;
 }
 
 void *file_student(void *par)
@@ -28,13 +28,13 @@ void *file_student(void *par)
     if (file == NULL)
     {
         printf("Errore apertura file origine\n");
-        return NULL;
+        pthread_exit NULL;
     }
     //fwrite(std, sizeof(studente), 1, file);
     fprintf(file, "Nome: %s Cognome: %s Media: %d", std->nome, std->cognome, std->media);
 
     fclose(file);
-    return NULL;
+    pthread_exit NULL;
 }
 
 int main(int argc, char *argv[])

@@ -14,7 +14,7 @@ void *ricerca_seconda(void *s)
             printf("Il numero 8 si trova nella seconda metà dell'array, in posizione: %d\n", i);
         }
     }
-    return NULL;
+    pthread_exit NULL;
 }
 
 void *ricerca_prima(void *s)
@@ -28,7 +28,7 @@ void *ricerca_prima(void *s)
             printf("Il numero 8 si trova nella prima metà dell'array, in posizione: %d\n", i);
         }
     }
-    return NULL;
+    pthread_exit NULL;
 }
 
 int main()
