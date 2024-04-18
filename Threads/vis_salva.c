@@ -15,6 +15,8 @@ typedef struct
 void *print_student(void *par)
 {
     studente *std = (studente *)par; // faccio il cast del parametro a studente
+    // studente stud = *(studente*) par; //con la struct senza puntatore
+    // printf("Nome: %s, Cognome: %s, Media: %d\n", std.nome, std.cognome, std.media); //con la struct no puntatore
     printf("Nome: %s, Cognome: %s, Media: %d\n", std->nome, std->cognome, std->media);
     pthread_exit NULL;
 }
@@ -30,7 +32,7 @@ void *file_student(void *par)
         printf("Errore apertura file origine\n");
         pthread_exit NULL;
     }
-    //fwrite(std, sizeof(studente), 1, file);
+    // fwrite(std, sizeof(studente), 1, file);
     fprintf(file, "Nome: %s Cognome: %s Media: %d", std->nome, std->cognome, std->media);
 
     fclose(file);
