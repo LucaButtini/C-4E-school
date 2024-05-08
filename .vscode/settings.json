@@ -9,7 +9,8 @@
         "fcntl.h": "c",
         "types.h": "c",
         "signal.h": "c",
-        "errno.h": "c"
+        "errno.h": "c",
+        "pthread.h": "c"
     },
     "C_Cpp.errorSquiggles": "disabled"
 }
