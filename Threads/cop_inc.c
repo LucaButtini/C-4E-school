@@ -34,7 +34,7 @@ int main(int argc, char *argv[])
 {
     if (argc != 3)
         return -1;
-
+        
     // Crea un array di puntatori a char per passare i percorsi dei file alla funzione leggi_file()
     char *file_paths[2];
     file_paths[0] = argv[1]; // Percorso del file di origine
