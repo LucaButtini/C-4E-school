@@ -150,5 +150,5 @@ int main(int argc, char *argv[])
     fclose(destinazione);
 
     return 0;
-    /
+
 }
