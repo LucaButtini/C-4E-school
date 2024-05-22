@@ -30,8 +30,7 @@ void *read_file(void *arg) {
   while (!feof(origine)) {
     // blocco la sezione critica
     pthread_mutex_lock(&mutex);
-    // attendo se il ring è pieno segnalando all'altro thread la situazione del
-    // buffer
+    // attendo se il ring è pieno segnalando all'altro thread la situazione del buffer
     if (slice_count > N_SLICES)
       pthread_cond_wait(&not_full, &mutex);
     // leggo i dati dal file di origine
