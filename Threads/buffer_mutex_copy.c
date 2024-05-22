@@ -1,7 +1,5 @@
 #include <pthread.h>
-
 #include <stdbool.h>
-
 #include <stdio.h>
 
 #define DIM 64 // Dimensione del buffer

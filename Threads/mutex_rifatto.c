@@ -23,19 +23,15 @@ void *write_file(void *arg) {
 
     pthread_mutex_lock(&mutex);
     if (n_slices > 0) {
-      fwrite(buffer[read_index].buffer_in_str, 1, buffer[read_index].n,
-             (FILE *)arg);
+      fwrite(buffer[read_index].buffer_in_str, 1, buffer[read_index].n,(FILE *)arg);
       read_index = (read_index + 1) % NUM_SLICES;
       n_slices--;
     } else {
       pthread_cond_wait(&not_empty, &mutex);
     }
-
     pthread_mutex_unlock(&mutex);
-
     pthread_cond_signal(&not_full);
   }
-
   pthread_exit(NULL);
 }
 
