@@ -17,7 +17,7 @@ int read_index = 0, write_index = 0, n_block = 0;
 // Flag che indica se la lettura è terminata
 bool end = false;
 // Mutex per sincronizzazione critica e per il contatore di blocchi
-pthread_mutex_t critical;
+pthread_mutex_t mutex;
 // Variabili di condizione per segnalare lo stato del ring
 pthread_cond_t not_full, not_empty;
 FILE *origine, *destinazione;
@@ -27,10 +27,10 @@ void *leggi(void *par) {
   int n;
   while (!feof(origine)) {
     // Blocca la sezione critica
-    pthread_mutex_lock(&critical);
+    pthread_mutex_lock(&mutex);
     // Attende se il ring è pieno
     if (n_block > N)
-      pthread_cond_wait(&not_full, &critical);
+      pthread_cond_wait(&not_full, &mutex);
     // Legge dal file di origine nel buffer corrente
     n = fread(ring_buffer[write_index].buffer, 1, DIM, origine);
     if (n > 0) // Se sono stati letti dei byte
@@ -45,7 +45,7 @@ void *leggi(void *par) {
       pthread_cond_signal(&not_empty);
     }
     // Sblocca la sezione critica
-    pthread_mutex_unlock(&critical);
+    pthread_mutex_unlock(&mutex);
   }
   // Imposta il flag di fine lettura
   end = true;
@@ -62,7 +62,7 @@ void *scrivi(void *par) {
     if (end && n_block == 0)
       break;
     // Blocca la sezione critica
-    pthread_mutex_lock(&critical);
+    pthread_mutex_lock(&mutex);
     // Se ci sono blocchi nel ring, scrive nel file di destinazione
     if (n_block > 0) {
       fwrite(ring_buffer[read_index].buffer, 1, ring_buffer[read_index].n, destinazione);
@@ -74,10 +74,10 @@ void *scrivi(void *par) {
     } else {
 
       // Attende se il ring è vuoto
-      pthread_cond_wait(&not_empty, &critical);
+      pthread_cond_wait(&not_empty, &mutex);
     }
     // Sblocca la sezione critica
-    pthread_mutex_unlock(&critical);
+    pthread_mutex_unlock(&mutex);
   }
   pthread_exit(NULL);
 }
@@ -102,7 +102,7 @@ int main(int argc, char *argv[]) {
   }
 
   // Inizializza i mutex e le variabili di condizione
-  pthread_mutex_init(&critical, NULL);
+  pthread_mutex_init(&mutex, NULL);
   pthread_cond_init(&not_full, NULL);
   pthread_cond_init(&not_empty, NULL);
 
@@ -115,7 +115,7 @@ int main(int argc, char *argv[]) {
   pthread_join(scrittura_thread, NULL);
 
   // Distrugge i mutex e le variabili di condizione
-  pthread_mutex_destroy(&critical);
+  pthread_mutex_destroy(&mutex);
   pthread_cond_destroy(&not_full);
   pthread_cond_destroy(&not_empty);
 
